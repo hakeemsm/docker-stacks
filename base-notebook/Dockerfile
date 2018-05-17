@@ -115,7 +115,10 @@ RUN conda install --quiet --yes \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
-EXPOSE 8888
+USER root
+
+EXPOSE 443
+WORKDIR $HOME
 
 # Configure container startup
 ENTRYPOINT ["tini", "-g", "--"]
